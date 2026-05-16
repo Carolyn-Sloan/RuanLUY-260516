@@ -179,12 +179,14 @@ jobs:
 
     - name: Load custom feeds
       run: |
+        echo "workspace files:"
+        ls -la $GITHUB_WORKSPACE
 
-        chmod +x $DIY_P1_SH
+        chmod +x $GITHUB_WORKSPACE/diy-part1.sh
 
         cd openwrt
 
-        $GITHUB_WORKSPACE/$DIY_P1_SH
+        $GITHUB_WORKSPACE/diy-part1.sh
 
     - name: Update feeds
       run: |
