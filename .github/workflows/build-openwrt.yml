@@ -39,7 +39,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: Carolyn-Sloan/RuanLUY-260516@main
+      uses: actions/checkout@v4
 
     - name: Initialization environment
       env:
