@@ -168,12 +168,12 @@ jobs:
         key: openwrt-dl-${{ hashFiles('diy-part1.sh') }}
         restore-keys: |
           openwrt-dl-
-
+          
     - name: Cache ccache
       uses: actions/cache@v4
       with:
         path: ~/.ccache
-        key: openwrt-ccache-${{ github.sha }}
+        key: openwrt-ccache-${{ runner.os }}
         restore-keys: |
           openwrt-ccache-
 
