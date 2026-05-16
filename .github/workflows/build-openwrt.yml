@@ -179,14 +179,18 @@ jobs:
 
     - name: Load custom feeds
       run: |
-        echo "workspace files:"
+        set -x
+        echo "workspace:"
         ls -la $GITHUB_WORKSPACE
-
-        chmod +x $GITHUB_WORKSPACE/diy-part1.sh
-
-        cd openwrt
-
-        $GITHUB_WORKSPACE/diy-part1.sh
+        SCRIPT="$GITHUB_WORKSPACE/diy-part1.sh"
+        if [ ! -f "$SCRIPT" ]; then
+          echo "ERROR: diy-part1.sh not found"
+          find $GITHUB_WORKSPACE -name "diy-part1.sh"
+            exit 1
+        fi
+          chmod +x "$SCRIPT"
+          cd openwrt
+          "$SCRIPT"
 
     - name: Update feeds
       run: |
